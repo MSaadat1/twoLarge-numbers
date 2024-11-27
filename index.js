@@ -28,7 +28,7 @@ function twoLargestNumbers(num) {
 }
 console.log(twoLargestNumbers([2, 3, 4, 5, 6]));
 
-// if combine the the two for loops for space complexity
+// if combine the two for loops for space complexity
 
 // for(let i = 0; i < num.length; i++){
 //    if(num[i] > max1){
