@@ -1,28 +1,40 @@
-// filterArray function takes an array and callback function as inputs
-// this function should return a new array to satisfy the condition
-// in the callback function
-// to modify the function , it should accept an additional argument 
-// to specifies the start of index
+// in an array of numbers
+// return the two largest numbers
+// function with one argument
+function twoLargestNumbers(num) {
+  // to find the maximum number in a array,initialize the maximum with -Infinity
+  // to ensure any number in the array can replace it at first comparison
+  // -Infinity is a concept in javascript that is smaller than any number
+  // two values are assigned, to compare with two largest numbers in an array of numbers
 
-// first we need a function with three arguments
-// an array , callback and index from where the filter starts in an array
-function filterArray(array, callback, index = 0){
-    // need an empty array to push new array after fulfilling the condition
-    let newArray = [];
-    // for loop to go through each element in an array
-    for(let i = index; i < array.length; i++){
-        // if callback function is true
-        if(callback(array[i])){
-        // pass them to new array
-        newArray.push(array[i]);
-        }
+  let max1 = -Infinity;
+  let max2 = -Infinity;
+  // for edge cases if there is not two numbers
+  if (num.length < 2) return null;
+  // loop through each number in an array
+  for (let i = 0; i < num.length; i++) {
+    // if the number is bigger than max1 value, the number is assigned to max1
+    if (num[i] > max1) {
+      max1 = num[i];
     }
-    // return the newArray
-    return newArray;
+  }
+  // for finding the second largest number
+  for (let i = 0; i < num.length; i++) {
+    if (num[i] > max2 && num[i] !== max1) {
+      max2 = num[i];
+    }
+  }
+  return [max1, max2];
 }
-// we need to have the callback function with the condition
-function isEven(num){
-    return num % 2 === 0;
-}
+console.log(twoLargestNumbers([2, 3, 4, 5, 6]));
 
-console.log(filterArray([1,2,3,4], isEven, 1));
+// if combine the the two for loops for space complexity
+
+// for(let i = 0; i < num.length; i++){
+//    if(num[i] > max1){
+//     max2 = max1; update max2 to the previous max1
+//     max1 = num[i];  update max1
+//   }else if (num[i] > max2 && num[i] !== max1){
+//     max2 = num[i]; update max2 if it is larger than the current max2
+//   }
+//  }
